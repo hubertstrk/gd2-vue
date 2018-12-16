@@ -2,12 +2,13 @@
   <div class="menu">
     <div class="menu-options">
       <h1>Options</h1>
+      <br>
       <el-switch v-model="language" active-text="German" inactive-text="English"></el-switch>
-      <el-switch v-model="type" active-text="Fuzzy" inactive-text="Precise"></el-switch>
-      <el-badge type="primary" :value="3679" class="item">
+      <el-switch v-model="type" active-text="Precise" inactive-text="Fuzzy"></el-switch>
+      <!-- <el-badge type="primary" :value="3679" class="item">
         <el-button type="text">Translations</el-button>
       </el-badge>
-     <el-button type="text">About</el-button>
+     <el-button type="text">About</el-button> -->
     </div>
   </div>
 </template>
