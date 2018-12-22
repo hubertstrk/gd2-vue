@@ -11,6 +11,9 @@ export default {
   name: 'app',
   components: {
     Home
+  },
+  mounted () {
+    this.$store.dispatch('initTranslations')
   }
 }
 </script>
@@ -23,4 +26,21 @@ export default {
   color: #2c3e50;
   margin: 20px;
 }
+
+h1 {
+  font-size: 60px;
+  margin-block-start: 0.3em !important;
+  margin-block-end: 0.3em !important;
+}
+h2 {
+  font-size: 45px;
+  margin-block-start: 0.25em !important;
+  margin-block-end: 0.25em !important;
+}
+h3 {
+  font-size: 38px;
+  margin-block-start: 0.2em !important;
+  margin-block-end: 0.2em !important;
+}
+
 </style>

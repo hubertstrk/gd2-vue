@@ -1,33 +1,38 @@
 <template>
   <div class="menu">
-    <div class="menu-options">
-      <h1>Options</h1>
-      <br>
-      <el-switch v-model="language" active-text="German" inactive-text="English"></el-switch>
-      <el-switch v-model="type" active-text="Precise" inactive-text="Fuzzy"></el-switch>
-      <!-- <el-badge type="primary" :value="3679" class="item">
-        <el-button type="text">Translations</el-button>
-      </el-badge>
-     <el-button type="text">About</el-button> -->
+    <div>
+      <el-switch v-model="language" active-value="german" inactive-value="english" active-text="German" inactive-text="English"></el-switch>
+      <!-- <el-switch v-model="type" active-value="precise" inactive-value="fuzzy" active-text="Precise" inactive-text="Fuzzy"></el-switch> -->
+    </div>
+    <div>
+      <div>About</div>
     </div>
   </div>
 </template>
 
 <script>
+
+import { mapState } from 'vuex'
+
 export default {
   name: 'Menu',
-  data () {
-    return {
-      language: false,
-      type: false
+  computed: {
+    ...mapState({
+      selectedLanguage: state => state.language,
+      selectedType: state => state.type
+    }),
+    language: {
+      get () { return this.selectedLanguage },
+      set (value) { this.$store.commit('setLanguage', value) }
+    },
+    type: {
+      get () { return this.selectedType },
+      set (value) { this.$store.dispatch('setType', value) }
     }
-  },
-  methods: {
   }
 }
 </script>
 
 <style lang="css" scoped>
 .menu {display: flex; align-items: center; justify-content: space-between;}
-.menu-options > * {margin: 0 10px;}
 </style>
