@@ -53,7 +53,6 @@ alphabetisches ortsverzeichnis;alphabetic place register
 alphanumerisch;alphanumeric
 alphanumerische daten;alphanumeric data
 altgrad;degree
-karte;map
 kartenwerke;map series
 kartographie;cartography
 schreibweise;orthography
@@ -65,7 +64,6 @@ analogausgabe;hardcopy
 bildmessung;image measurements
 bildtransformation;image transformation
 bildverarbeitung;image processing
-karte;map
 photogrammetrie;photogrammetry
 bild;image
 analyse;analysis
@@ -856,7 +854,6 @@ abteilung;division
 inlaendischer flug;domestic flight
 libellennivellier mit festem fernrohr;dumpy level
 pflicht;duty
-kante;edge
 hochpunkt;elevated point
 hoehe (ueber bezugsflaeche (nn));elevation
 arbeitnehmer;employee

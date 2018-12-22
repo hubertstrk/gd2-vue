@@ -34,5 +34,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.menu {display: flex; align-items: center; justify-content: space-between;}
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 </style>

@@ -9,7 +9,7 @@ Vue.use(Vuex)
 var baseOptions = {
   shouldSort: true,
   location: 0,
-  maxPatternLength: 8,
+  maxPatternLength: 16,
   includeScore: true,
   includeMatches: true
 }
@@ -23,7 +23,7 @@ export default new Vuex.Store({
     input: ''
   },
   mutations: {
-    addTranslations (state, translations) {
+    setTranslations (state, translations) {
       state.translations = translations
     },
     setInput (state, input) {
@@ -31,6 +31,9 @@ export default new Vuex.Store({
     },
     setResult (state, result) {
       state.result = result
+    },
+    addResult (state, translation) {
+      state.result.push(translation)
     },
     setType (state, type) {
       state.type = type
@@ -48,18 +51,17 @@ export default new Vuex.Store({
         acc.push({ id: i, german: parts[0], english: parts[1] })
         return acc
       }, [])
-      commit('addTranslations', translations)
+      commit('setTranslations', translations)
     },
     findTranslations ({ state, commit }) {
       var options = {
         location: 0,
         keys: [state.language],
-        threshold: state.type === 'precise' ? 0.0 : 0.2,
-        distance: state.type === 'precise' ? 0 : 100
+        threshold: 0.2,
+        distance: 10
       }
       const fuseOptions = Object.assign(baseOptions, options)
       var fuse = new Fuse(state.translations, fuseOptions)
-      console.info(fuseOptions)
       const result = fuse.search(state.input)
       commit('setResult', result)
     },

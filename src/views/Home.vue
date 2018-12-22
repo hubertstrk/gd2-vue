@@ -18,21 +18,26 @@ import Result from '@/components/Result'
 export default {
   name: 'Home',
   components: {
-    Menu, Search, Result
+    Menu,
+    Search,
+    Result
   }
 }
 </script>
 
 <style scoped lang="css">
-.container {
+.container, .content {
   display: flex;
   flex-direction: column;
+}
+
+.container {
   width: 100%;
 }
+
 .content {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  margin: 0 25% 0 25%;
+  align-self: center;
+  max-width: 800px;
+  width: 100%;
 }
 </style>
