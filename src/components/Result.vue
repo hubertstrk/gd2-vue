@@ -1,13 +1,14 @@
 <template>
   <div class="result" v-if="pageResult.length">
     <table>
-      <transition-group name="list-complete" tag="tbody">
-        <tr class="list-complete-item" v-for="(row, i) in pageResult" :key="row.item.id">
-          <td>{{page * 10 - 10 + i + 1}}</td>
-          <td>{{row.item[firstLanguage]}}</td>
-          <td>{{row.item[secondLanguage]}}</td>
-        </tr>
-      </transition-group>
+      <tr v-for="(row, i) in pageResult" :key="row.item.id">
+        <td>{{page * 10 - 10 + i + 1}}</td>
+        <td>{{row.item[firstLanguage]}}</td>
+        <td>{{row.item[secondLanguage]}}</td>
+        <td style="width: 200px;">
+          <el-progress :color="score(row).color" :percentage="score(row).percentage"></el-progress>
+        </td>
+      </tr>
     </table>
     <div class="pagination">
       <div>Showing {{page * 10 - 10 + 1}} to {{page * 10}} of {{result.length}}</div>
@@ -43,24 +44,21 @@ export default {
   methods: {
     change (page) {
       this.page = page
+    },
+    score (row) {
+      const percentage = Math.round((1 - row.score) * 100)
+      let color = '#67C23A'
+      if (percentage < 90) color = '#E6A23C'
+      if (percentage < 80) color = '#409EFF'
+      if (percentage < 70) color = '#F56C6C'
+      if (percentage < 60) color = '#909399'
+      return { percentage, color }
     }
   }
 }
 </script>
 
 <style lang="css" scoped>
-.list-complete-item {
-  transition: all 1s;
-}
-.list-complete-enter, .list-complete-leave-to
-/* .list-complete-leave-active below version 2.1.8 */ {
-  opacity: 0;
-  transform: translateX(130px);
-}
-.list-complete-leave-active {
-  position: absolute;
-  width: 100%;
-}
 .result {
   max-width: 800px;
   width: 100%;
@@ -85,19 +83,19 @@ th, td {
   padding: 16px 6px;
 }
 
-tr:nth-child(even) {
+/* tr:nth-child(even) {
   background-color: #EBEEF5;
-}
+} */
 
 tr
 {
-  transition: all .2s ease;
+  transition: all .4s linear;
 }
 
 tr:hover
 {
-  color: white;
-  background-color: #409EFF;
+  /* color: white; */
+  background-color: #C0C4CC;
 }
 
 th {

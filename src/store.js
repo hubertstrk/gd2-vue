@@ -7,9 +7,11 @@ import db from './db/db.txt'
 Vue.use(Vuex)
 
 var baseOptions = {
-  shouldSort: true,
   location: 0,
-  maxPatternLength: 16,
+  maxPatternLength: 64,
+  threshold: 0.4,
+  distance: 50,
+  shouldSort: true,
   includeScore: true,
   includeMatches: true
 }
@@ -55,10 +57,7 @@ export default new Vuex.Store({
     },
     findTranslations ({ state, commit }) {
       var options = {
-        location: 0,
-        keys: [state.language],
-        threshold: 0.2,
-        distance: 10
+        keys: [state.language]        
       }
       const fuseOptions = Object.assign(baseOptions, options)
       var fuse = new Fuse(state.translations, fuseOptions)
