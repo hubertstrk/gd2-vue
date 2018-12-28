@@ -5,7 +5,7 @@
       <!-- <el-switch v-model="type" active-value="precise" inactive-value="fuzzy" active-text="Precise" inactive-text="Fuzzy"></el-switch> -->
     </div>
     <div>
-      <div>About</div>
+      <div @click="$router.push('/about')">About</div>
     </div>
   </div>
 </template>
