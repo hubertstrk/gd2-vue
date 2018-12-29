@@ -1,5 +1,9 @@
 <template>
   <div class="result" v-if="pageResult.length">
+    <el-alert class="result-message" v-if="result && result.length > 100"
+      title=" The query led to a high number of results. To receive a clearer result narrow your search expression."
+      type="warning">
+    </el-alert>
     <table>
       <tr v-for="(row, i) in pageResult" :key="row.item.id">
         <td>{{page * 10 - 10 + i + 1}}</td>
@@ -62,6 +66,10 @@ export default {
 .result {
   max-width: 800px;
   width: 100%;
+}
+
+.result-message {
+  margin: 0 0 8px 0;
 }
 
 .pagination {

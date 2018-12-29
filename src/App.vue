@@ -25,23 +25,32 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin: 10px;
+  margin: 5px 10px;
 }
 
 h1 {
-  font-size: 60px;
-  margin-block-start: 0.3em !important;
-  margin-block-end: 0.3em !important;
+  font-size: 52px;
+  font-weight: normal !important;
+  margin-block-start: .3em !important;
+  margin-block-end: .3em !important;
 }
 h2 {
   font-size: 45px;
-  margin-block-start: 0.25em !important;
-  margin-block-end: 0.25em !important;
+  font-weight: normal !important;
+  margin-block-start: .3em !important;
+  margin-block-end: .3em !important;
 }
 h3 {
-  font-size: 38px;
-  margin-block-start: 0.2em !important;
-  margin-block-end: 0.2em !important;
+  font-size: 28px;
+  font-weight: normal !important;
+  margin-block-start: .3em !important;
+  margin-block-end: .3em !important;
+}
+h4 {
+  font-size: 18px;
+  font-weight: normal !important;
+  margin-block-start: .3em !important;
+  margin-block-end: .3em !important;
 }
 
 </style>

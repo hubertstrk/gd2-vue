@@ -1484,7 +1484,6 @@ dateneingabe;data input
 datenerfassung;data capture
 datenerfassungsgeraet;data capture device
 datenfeld;data field
-datenfernuebertragungs-netzwerk;dfue-netzwerk
 datenfernverarbeitung;remote data processing
 datenfluss;data flow
 datenformat;data format

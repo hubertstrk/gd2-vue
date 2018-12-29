@@ -1,11 +1,11 @@
 <template>
   <div class="menu">
-    <div>
-      <el-switch v-model="language" active-value="german" inactive-value="english" active-text="German" inactive-text="English"></el-switch>
-      <!-- <el-switch v-model="type" active-value="precise" inactive-value="fuzzy" active-text="Precise" inactive-text="Fuzzy"></el-switch> -->
+    <div class="menu-left">
+      <el-radio v-model="language" label="german">German</el-radio>
+      <el-radio v-model="language" label="english">English</el-radio>
     </div>
-    <div>
-      <div @click="$router.push('/about')">About</div>
+    <div class="menu-right">
+      <el-button @click="$router.push('/about')" type="text">About</el-button>
     </div>
   </div>
 </template>
@@ -16,6 +16,11 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'Menu',
+  data () {
+    return {
+      value1: 0
+    }
+  },
   computed: {
     ...mapState({
       selectedLanguage: state => state.language,
@@ -29,11 +34,26 @@ export default {
       get () { return this.selectedType },
       set (value) { this.$store.dispatch('setType', value) }
     }
+  },
+  methods: {
+    formatAccuracy () {
+      return 'foo'
+    }
   }
 }
 </script>
 
 <style lang="css" scoped>
+.accuracy {
+  width: 400px;
+  display: flex;
+}
+.menu-left {
+  display: flex;
+}
+.menu-right > * {
+  margin: 0 0 0 40px;
+}
 .menu {
   display: flex;
   align-items: center;
