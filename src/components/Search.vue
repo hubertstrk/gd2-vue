@@ -1,8 +1,8 @@
 <template>
   <div class="result">
-    <el-badge :type="severity()" :value="tweeningValue " class="item">
+    <TweenBadge :color="color" :value="this.result.length">
       <div class="title">Search</div>
-    </el-badge>
+    </TweenBadge>
     <el-input class="input" v-model="input" placeholder="Search">
       <el-button slot="append" icon="el-icon-search"></el-button>
     </el-input>
@@ -11,21 +11,12 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-const TWEEN = require('@tweenjs/tween.js')
-
-const animate = (time) => {
-  requestAnimationFrame(animate)
-  TWEEN.update(time)
-}
-requestAnimationFrame(animate)
+import TweenBadge from './TweenBadge'
 
 export default {
   name: 'Search',
-  data () {
-    return {
-      tweeningValue: 0,
-      myTween: null
-    }
+  components: {
+    TweenBadge
   },
   computed: {
     ...mapState({
@@ -36,32 +27,7 @@ export default {
       get () { return this.$store.state.input },
       set (value) { this.setInput(value) }
     },
-    results () {
-      return this.result.length
-    }
-  },
-  methods: {
-    ...mapActions([
-      'setInput'
-    ]),
-    tween (start, end) {
-      let frameHandler
-
-      const anim = { tweeningValue: start }
-      this.myTween = new TWEEN.Tween(anim)
-        .to({ tweeningValue: end }, 400)
-        .easing(TWEEN.Easing.Quadratic.InOut)
-        .onUpdate(() => {
-          this.tweeningValue = Math.round(anim.tweeningValue)
-        })
-        .onComplete(() => {
-          cancelAnimationFrame(frameHandler)
-        })
-        .start()
-
-      frameHandler = requestAnimationFrame(animate)
-    },
-    severity () {
+    color () {
       if (this.result.length === 0) return 'danger'
       else if (this.result.length < 10) return 'success'
       else if (this.result.length < 50) return 'primary'
@@ -69,13 +35,10 @@ export default {
       else return 'danger'
     }
   },
-  watch: {
-    results (newVal, oldVal) {
-      this.tween(oldVal, newVal)
-    },
-    translations () {
-      this.tween(0, this.translations.length)
-    }
+  methods: {
+    ...mapActions([
+      'setInput'
+    ])
   }
 }
 </script>
