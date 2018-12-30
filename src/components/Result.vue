@@ -1,9 +1,5 @@
 <template>
   <div class="result" v-if="pageResult.length">
-    <el-alert class="result-message" v-if="result && result.length > 100"
-      title=" The query led to a high number of results. To receive a clearer result narrow your search expression."
-      type="warning">
-    </el-alert>
     <table>
       <tr v-for="(row, i) in pageResult" :key="row.item.id">
         <td>{{page * 10 - 10 + i + 1}}</td>
@@ -58,6 +54,11 @@ export default {
       if (percentage < 60) color = '#909399'
       return { percentage, color }
     }
+  },
+  watch: {
+    result () {
+      this.page = 1
+    }
   }
 }
 </script>
@@ -67,11 +68,6 @@ export default {
   max-width: 800px;
   width: 100%;
 }
-
-.result-message {
-  margin: 0 0 8px 0;
-}
-
 .pagination {
   display: flex;
   align-items: center;
@@ -85,29 +81,16 @@ table {
   max-width: 800px;
   width: 100%;
 }
-
 th, td {
   text-align: left;
   padding: 16px 6px;
 }
-
-/* tr:nth-child(even) {
+table tr
+{
+  transition: all .2s linear;
+}
+table tr:hover
+{
   background-color: #EBEEF5;
-} */
-
-tr
-{
-  transition: all .4s linear;
-}
-
-tr:hover
-{
-  /* color: white; */
-  background-color: #C0C4CC;
-}
-
-th {
-  font-size: 1em;
-  font-weight: 400;
 }
 </style>

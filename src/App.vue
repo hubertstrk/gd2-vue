@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view />
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -15,6 +17,13 @@ export default {
 </script>
 
 <style>
+.fade-enter-active, .fade-leave-active {
+  transition: all .3s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
 body {
   margin: 0 !important;
   width: 100vw;
@@ -52,5 +61,4 @@ h4 {
   margin-block-start: .3em !important;
   margin-block-end: .3em !important;
 }
-
 </style>

@@ -8,9 +8,7 @@ Vue.use(Vuex)
 
 var baseOptions = {
   location: 0,
-  maxPatternLength: 64,
-  threshold: 0.4,
-  distance: 50,
+  maxPatternLength: 16,
   shouldSort: true,
   includeScore: true,
   includeMatches: true
@@ -21,7 +19,7 @@ export default new Vuex.Store({
     translations: [],
     result: [],
     language: 'german',
-    type: 'fuzzy',
+    accuracy: 30,
     input: ''
   },
   mutations: {
@@ -37,13 +35,13 @@ export default new Vuex.Store({
     addResult (state, translation) {
       state.result.push(translation)
     },
-    setType (state, type) {
-      state.type = type
-    },
     setLanguage (state, language) {
       state.result = null
       state.input = ''
       state.language = language
+    },
+    setAccuracy (state, accuracy) {
+      state.accuracy = accuracy
     }
   },
   actions: {
@@ -57,19 +55,23 @@ export default new Vuex.Store({
     },
     findTranslations ({ state, commit }) {
       var options = {
-        keys: [state.language]        
+        keys: [state.language],
+        threshold: this.state.accuracy / 100,
+        distance: this.state.accuracy,
+        position: this.state.accuracy / 10
       }
       const fuseOptions = Object.assign(baseOptions, options)
       var fuse = new Fuse(state.translations, fuseOptions)
       const result = fuse.search(state.input)
       commit('setResult', result)
     },
-    setType ({ commit, dispatch }, type) {
-      commit('setType', type)
+    setAccuracy ({ commit, dispatch }, accuracy) {
+      commit('setAccuracy', accuracy)
       dispatch('findTranslations')
     },
     setInput ({ commit, dispatch }, input) {
       commit('setInput', input)
+      commit('setResult', null)
       dispatch('findTranslations')
     }
   }
