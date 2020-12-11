@@ -3,11 +3,7 @@
     <el-button @click="$router.push('/')" type="text">Back to Dictionary</el-button>
     <h1>About</h1>
     <h3>Geodetic Dictionary</h3>
-    <h4>Hubert Stärk</h4>
-    <h4>Aussichtsweg 21</h4>
-    <h4>93138 Lappersdorf</h4>
-    <h3>Contact</h3>
-    <h4>hubert.staerk@gmail.com</h4>
+    <h4><a href="mailto:kw6yjvbi3cow3c@gmail.com">Hubert Stärk</a></h4>
   </Page>
 </template>
 
