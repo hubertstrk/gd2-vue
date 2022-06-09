@@ -1,4 +1,4 @@
-# geodeticdictionaryvue2
+# gd2-vue
 
 ## Project setup
 ```
