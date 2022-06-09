@@ -1,5 +1,7 @@
 # gd2-vue
 
+[![Node.js CI](https://github.com/hubertstrk/gd2-vue/actions/workflows/node.js.yml/badge.svg)](https://github.com/hubertstrk/gd2-vue/actions/workflows/node.js.yml)
+
 ## Project setup
 ```
 npm install
