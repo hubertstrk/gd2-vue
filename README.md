@@ -2,6 +2,8 @@
 
 [![Node.js CI](https://github.com/hubertstrk/gd2-vue/actions/workflows/node.js.yml/badge.svg)](https://github.com/hubertstrk/gd2-vue/actions/workflows/node.js.yml)
 
+[![pages-build-deployment](https://github.com/hubertstrk/gd2-vue/actions/workflows/pages/pages-build-deployment/badge.svg?branch=master)](https://github.com/hubertstrk/gd2-vue/actions/workflows/pages/pages-build-deployment)
+
 ## Project setup
 ```
 npm install
